@@ -16,6 +16,7 @@
     "webpack-cli": "^5.0.1"
   },
   "dependencies": {
-    "babel": "^6.23.0"
+    "babel": "^6.23.0",
+    "enzyme": "^3.11.0"
   }
 }
