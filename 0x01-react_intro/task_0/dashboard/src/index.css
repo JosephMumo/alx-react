@@ -10,6 +10,9 @@
     align-items: center;
     color: rgb(223, 6, 6);
 }
+.App-header img {
+    max-height: 20vh;
+}
 .App-body p {
     padding: 2rem
 }
