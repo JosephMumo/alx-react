@@ -1,0 +1,10 @@
+.App-header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: rgb(223, 6, 6);
+  }
+  .App-header img {
+    max-height: 20vh;
+  }

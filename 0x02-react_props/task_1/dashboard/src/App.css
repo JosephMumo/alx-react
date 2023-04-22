@@ -1,0 +1,10 @@
+.App {
+  padding: 1rem;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 1.5rem;
+}
+
+hr {
+  background-color: rgb(223, 6, 6);
+  height: 4px;
+}
