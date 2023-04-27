@@ -12,11 +12,12 @@ import React from 'react';
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.handleBtn = this.handleBtn.bind(this)
   }
 
-
+  
   handleBtn(h) {
-    if (e.ctrlKey && e.key === "h") {
+    if (h.ctrlKey && h.key === "h") {
       alert("Logging you out");
       this.props.logOut();
     }
@@ -37,11 +38,11 @@ class App extends React.Component {
   
 
   componentDidMount() {
-    addEventListener("keydown", this.handleBtn)
+    document.addEventListener("keydown", this.handleBtn)
   }
 
   componentWillUnmount() {
-    removeEventListener("keydown", this.handleBtn)
+    document.removeEventListener("keydown", this.handleBtn)
   }
 
   render() {
