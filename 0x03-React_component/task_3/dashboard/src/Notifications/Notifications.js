@@ -1,11 +1,11 @@
-import { React, Fragment } from 'react';
+import { React, Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import './Notifications.css';
 import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 import img from '../assets/close-icon.png';
 
-class Notifications extends React.component {
+class Notifications extends Component {
     constructor(props) {
         super(props)
         this.markAsRead = this.markAsRead.bind(this)

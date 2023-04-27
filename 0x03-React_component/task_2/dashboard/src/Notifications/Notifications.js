@@ -5,7 +5,7 @@ import NotificationItem from './NotificationItem';
 import NotificationItemShape from './NotificationItemShape';
 import img from '../assets/close-icon.png';
 
-class Notifications extends React.component {
+class Notifications extends React.Component {
     constructor(props) {
         super(props)
         this.markAsRead = this.markAsRead.bind(this)
