@@ -10,6 +10,18 @@ import { getLatestNotification } from '../utils/utils';
 import React from 'react';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+
+
+  handleBtn(h) {
+    if (e.ctrlKey && e.key === "h") {
+      alert("Logging you out");
+      this.props.logOut();
+    }
+  }
+
   listCourses = [
     {id: 1, name: 'ES6', credit: 60},
     {id: 2, name: 'Webpack', credit: 20},
@@ -21,6 +33,16 @@ class App extends React.Component {
     {id: 2, value: "New resume available", type: "urgent"},
     {id: 3, html: getLatestNotification(), type: "urgent"},
   ];
+
+  
+
+  componentDidMount() {
+    addEventListener("keydown", this.handleBtn)
+  }
+
+  componentWillUnmount() {
+    removeEventListener("keydown", this.handleBtn)
+  }
 
   render() {
     return (
@@ -38,10 +60,14 @@ class App extends React.Component {
 
 App.defaultProps = {
   isLoggedIn: false,
+  logOut: () => {
+    return;
+  },
 };
 
 App.propTypes = {
   isLoggedIn: PropTypes.bool,
+  logOut: PropTypes.func,
 };
 
 export default App;
