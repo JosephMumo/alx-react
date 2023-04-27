@@ -13,6 +13,11 @@ class Notifications extends Component {
     markAsRead = (id) => {
         console.log(`Notification ${id} has been marked as read`)
     }
+
+    shouldComponentUpdate(nextProps) {
+        return(nextProps.length > this.listNotifications.length)
+    }
+
     render() {
         return (
             <Fragment>
@@ -39,14 +44,10 @@ class Notifications extends Component {
                             <Fragment>
                                 <p>Here is the list of notifications</p>
                                 <ul>
-                                    {this.props.listNotifications.map((val) => {
-                                        return <NotificationItem
-                                            key={val.id}
-                                            type={val.type}
-                                            value={val.value}
-                                            html={val.html}
-                                        />
-                                    })}
+                                    {this.props.listNotifications.length == 0 ? <NotificationItem type="default" value="No new notification for now" /> : null}
+                                    {this.props.listNotifications.map((val, idx) => {
+                                    return <NotificationItem type={val.type} value={val.value} html={val.html} key={val.id} markAsRead={this.markAsRead} id={val.id} />;
+                                     })}
                                 </ul>
                             </Fragment> :
                             <ul>
