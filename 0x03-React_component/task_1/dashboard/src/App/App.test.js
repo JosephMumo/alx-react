@@ -52,34 +52,34 @@ describe('Test <App isLoggedIn={true} />', () => {
 
 describe("When ctrl + h is pressed", () => {
     it("calls logOut function", () => {
-      const mocked = jest.fn();
-      const wrapper = mount(<App logOut={mocked} />);
+      const test = jest.fn();
+      const wrapper = mount(<App logOut={test} />);
       const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
       document.dispatchEvent(event);
   
-      expect(mocked).toHaveBeenCalledTimes(1);
+      expect(test).toHaveBeenCalledTimes(1);
       wrapper.unmount();
     });
   
     document.alert = jest.fn();
     it("checks that alert function is called", () => {
       const wrapper = mount(<App />);
-      const spy = jest.spyOn(window, "alert");
+      const win = jest.spyOn(window, "alert");
       const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
       document.dispatchEvent(event);
   
-      expect(spy).toHaveBeenCalled();
-      spy.mockRestore();
+      expect(win).toHaveBeenCalled();
+      win.mockRestore();
       wrapper.unmount();
     });
   
     it('checks that the alert is "Logging you out"', () => {
       const wrapper = mount(<App />);
-      const spy = jest.spyOn(window, "alert");
+      const win = jest.spyOn(window, "alert");
       const event = new KeyboardEvent("keydown", { ctrlKey: true, key: "h" });
       document.dispatchEvent(event);
   
-      expect(spy).toHaveBeenCalledWith("Logging you out");
+      expect(win).toHaveBeenCalledWith("Logging you out");
       jest.restoreAllMocks();
       wrapper.unmount();
     });
