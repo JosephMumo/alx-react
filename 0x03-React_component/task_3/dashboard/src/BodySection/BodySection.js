@@ -1,4 +1,4 @@
-import react, {Component} from 'react';
+import {Component} from 'react';
 import PropTypes from 'prop-types';
 
 class BodySection extends Component {
@@ -12,8 +12,8 @@ class BodySection extends Component {
         )
     }
 }
-BodySection.PropTypes = {
+BodySection.propTypes = {
     title: PropTypes.string.isRequired,
-    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+    children: PropTypes.oneOfType([PropTypes.string, PropTypes.element])
 };
 export default BodySection

@@ -8,6 +8,8 @@ import CourseList from '../CourseList/CourseList';
 import Notifications from '../Notifications/Notifications';
 import { getLatestNotification } from '../utils/utils';
 import React from 'react';
+import BodySection from '../BodySection/BodySection';
+import BodySectionWithMarginBottom from '../BodySection/BodySectionWithMarginBottom'
 
 class App extends React.Component {
   constructor(props) {
@@ -51,7 +53,18 @@ class App extends React.Component {
             <Notifications listNotifications={this.listNotifications} />
       <div className="App">
         <Header />
-        {this.props.isLoggedIn ? <CourseList listCourses={this.listCourses} /> : <Login />}
+        {this.props.isLoggedIn ?
+        <BodySectionWithMarginBottom title="Course List">
+          <CourseList listCourses={this.listCourses} />
+        </BodySectionWithMarginBottom>  
+        : (
+        <BodySectionWithMarginBottom title="Log in to continue">
+            <Login />
+        </BodySectionWithMarginBottom>
+        )}
+        <BodySection title="News from the School">
+          <p>In today's school news, the principal announced that the annual talent show will take place next month and encouraged students to sign up for auditions. The school's robotics team also brought home first place in a regional competition, and their victory was celebrated with a pizza party. In other news, the art club is hosting a fundraiser to raise money for new supplies, and the drama club is putting on a production of Romeo and Juliet this weekend. Finally, the school's debate team is preparing for an upcoming tournament and has been practicing vigorously after school.</p>
+        </BodySection>
         <Footer />
       </div>
       </Fragment>
