@@ -2,6 +2,10 @@ import { shallow } from 'enzyme';
 import CourseListRow from './CourseListRow';
 
 describe('CourseListRow Component Tests', () => {
+    beforeEach(() => {
+        StyleSheetTestUtils.suppressStyleInjection();
+      });
+    
     it('test the component renders one cell with colspan = 2 when textSecondCell does not exist and isHeader', () => {
         let wrapper = shallow(<CourseListRow isHeader={true} textFirstCell='first cell' />);
         expect(wrapper.find('th')).toHaveLength(1);
