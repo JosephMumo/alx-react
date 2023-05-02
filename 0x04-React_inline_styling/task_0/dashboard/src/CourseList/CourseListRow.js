@@ -7,13 +7,14 @@ function CourseListRow({ isHeader=false, textFirstCell, textSecondCell=null }) {
     const headerStyle = {
         backgroundColor: '#deb5b545'
     }
+    const selectStyle = isHeader ? headerStyle : rowStyle
     return (
-        <tr style={rowStyle}>
+        <tr style={selectStyle}>
             {isHeader ?
                 <>
-                    <th style={headerStyle} colSpan={textSecondCell == null ? 2 : 1}>{textFirstCell}</th>
+                    <th colSpan={textSecondCell == null ? 2 : 1}>{textFirstCell}</th>
                     {textSecondCell !== null &&
-                        <th style={headerStyle} >{textSecondCell}</th>
+                        <th >{textSecondCell}</th>
                     }
                 </> :
                 <>
