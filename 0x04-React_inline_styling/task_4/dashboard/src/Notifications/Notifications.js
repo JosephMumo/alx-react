@@ -21,7 +21,7 @@ class Notifications extends Component {
     render() {
         return (
             <Fragment>
-                <div className='menuItem'>
+                <div className={css(NotificationStyle.MenuItem)}>
                     Your notifications
                 </div>
                 {this.props.displayDrawer &&
@@ -62,18 +62,45 @@ class Notifications extends Component {
     }
 }
 
+const opacAnim = {
+    "0%": { opacity: 0.5},
+    "100%": { opacity: 1},
+}
+
+const bounceAnim = {
+    "0%": { transform: 'translateY{0px}'},
+    "30%": { transform: 'translateY{-5px}'},
+    "60%": { transform: 'translateY{5px}'},
+    "100%": { transform: 'translateY{0px}'},
+}
+
 const NotificationStyle = StyleSheet.create({
     Notification: {
         position: 'relative',
         border: '1.2px dashed red',
         padding: '.2rem .3rem',
         marginBottom: '1.5rem',
+        animationName: 'testing',
+        animationDuration: '4s',
         "@media(max-width: 900px)" : {
             width: '100%',
             padding: 0,
             fontSize: 20,
-        }
-    }
+        },
+    },
+    MenuItem: {
+        menuItem: {
+            position: "relative",
+            zIndex: 100,
+            textAlign: "right",
+            ":hover": {
+              cursor: "pointer",
+              animationName: [opacAnim, bounceAnim],
+              animationDuration: "1s, 0.5s",
+              animationIterationCount: "3",
+            },
+        },   
+    },
 })
 
 Notifications.defaultProps = {
