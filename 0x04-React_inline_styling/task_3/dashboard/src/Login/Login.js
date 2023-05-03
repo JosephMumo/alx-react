@@ -23,11 +23,16 @@ const LoginStyles = StyleSheet.create({
         flexDirection: 'column',
         margin: '1.2rem 0 0 2.5rem',
         justifyContent: 'center',
+        
     },
     LoginForm: {
         display: 'flex',
         gap: '.6rem',
-    }
+        "@media(max-width: 900px)" : {
+            display: 'flex',
+            flexDirection: 'column',
+        },
+    },
 })
 
 export default Login;
