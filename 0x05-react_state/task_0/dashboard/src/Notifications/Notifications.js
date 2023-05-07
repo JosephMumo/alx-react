@@ -15,13 +15,14 @@ class Notifications extends Component {
     }
 
     shouldComponentUpdate(nextProps) {
-        return(nextProps.length > this.listNotifications.length)
+        return(nextProps.length > this.listNotifications.length ||
+            this.props.displayDrawer != nextProps.displayDrawer)
     }
 
     render() {
         return (
             <Fragment>
-                <div className={css(NotificationStyle.MenuItem)}>
+                <div className={css(NotificationStyle.MenuItem)} onClick={this.props.handleDisplayDrawer()}>
                     Your notifications
                 </div>
                 {this.props.displayDrawer &&
@@ -36,7 +37,7 @@ class Notifications extends Component {
                                 backgroundColor: 'transparent',
                             }}
                             aria-label='Close'
-                            onClick={() => console.log('Close button has been clicked')}
+                            onClick={this.props.handleHideDrawer()}
                         >
                             <img style={{width: '15px'}} src={img} alt='close button' />
                         </button>
@@ -106,11 +107,15 @@ const NotificationStyle = StyleSheet.create({
 Notifications.defaultProps = {
     displayDrawer: false,
     listNotifications: [],
+    handleHideDrawer: () => {},
+    handleDisplayDrawer: () => {},
 }
 
 Notifications.propTypes = {
     displayDrawer: PropTypes.bool,
     listNotifications: PropTypes.arrayOf(NotificationItemShape),
+    handleDisplayDrawer: PropTypes.func,
+    handleHideDrawer: PropTypes.func,
 };
 
 export default Notifications;

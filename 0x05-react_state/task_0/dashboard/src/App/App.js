@@ -14,9 +14,40 @@ import {StyleSheet, css} from "aphrodite"
 class App extends React.Component {
   constructor(props) {
     super(props)
+    this.isLoggedIn = props.isLoggedIn;
+    this.logOut = props.logOut;
+    this.state = {
+      displayDrawer: false
+    }
     this.handleBtn = this.handleBtn.bind(this)
+    this.handledisplayDrawer = this.handledisplayDrawer.bind(this)
+    this.handleHideDrawer = this.handleHideDrawer.bind(this)
+
+    this.listCourses = [
+      {id: 1, name: 'ES6', credit: 60},
+      {id: 2, name: 'Webpack', credit: 20},
+      {id: 3, name: 'React', credit: 40},
+    ];
+  
+    this.listNotifications = [
+      {id: 1, value: "New course available", type: "default"},
+      {id: 2, value: "New resume available", type: "urgent"},
+      {id: 3, html: getLatestNotification(), type: "urgent"},
+    ];
   }
 
+
+  handledisplayDrawer() {
+    this.setState({
+      displayDrawer: true
+    })
+  }
+
+  handleHideDrawer() {
+    this.setState({
+      displayDrawer: false
+    })
+  }
   
   handleBtn(h) {
     if (h.ctrlKey && h.key === "h") {
@@ -24,20 +55,6 @@ class App extends React.Component {
       this.props.logOut();
     }
   }
-
-  listCourses = [
-    {id: 1, name: 'ES6', credit: 60},
-    {id: 2, name: 'Webpack', credit: 20},
-    {id: 3, name: 'React', credit: 40},
-  ];
-
-  listNotifications = [
-    {id: 1, value: "New course available", type: "default"},
-    {id: 2, value: "New resume available", type: "urgent"},
-    {id: 3, html: getLatestNotification(), type: "urgent"},
-  ];
-
-  
 
   componentDidMount() {
     document.addEventListener("keydown", this.handleBtn)
