@@ -18,10 +18,10 @@ function Login() {
   };
 
   useEffect(() => {
-    if (email != '' && password != '') {
+    if (email !== '' && password !== '') {
       setEnableSubmit(true);
     } else {
-      if (enableSubmit != false) {
+      if (enableSubmit !== false) {
         setEnableSubmit(false);
       }
     }
